@@ -14,9 +14,17 @@
       <div class="panel-content">
         <div class="div-li">
           <div class="li-left">
-
+            <img class="headtrait img-margin-right" :src="title.author.avatar_url" :title="title.author.loginname" @click="jumpToUser(title.author.loginname)">
+            <span class="count hide">
+							<span v-text="title.reply_count"></span>/<span v-text="title.visit_count"></span>
+						</span>
+            <span :class="['status', `${title.status}`]" v-text="title.text"></span>
+            <span :class="['title', 'media-font-size', {titleActive: title.isActive}]" v-text="title.title" @click="jumpToThemeDetails(title.id, title)"></span>
           </div>
-          <div class="li-right flex-end"></div>
+          <div class="li-right flex-end">
+            <img class="hide" :src="title.author.avatar_url">
+            <span v-text="title.reply"></span>
+          </div>
         </div>
       </div>
       <div class="footer-ul">分页栏</div>
